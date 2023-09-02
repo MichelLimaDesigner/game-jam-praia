@@ -292,7 +292,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &690829455
+--- !u!114 &690829458
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -304,8 +304,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a2634c6ba92bcb48b3d74c1b11a6f17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidadeMovimento: 5
-  forcaPulo: 300
+  moveSpeed: 5
+  jumpForce: 300
+  maxJumps: 3
 --- !u!1 &732136467
 GameObject:
   m_ObjectHideFlags: 0
@@ -403,7 +404,7 @@ GameObject:
   - component: {fileID: 745795806}
   m_Layer: 0
   m_Name: platform
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -585,7 +586,7 @@ PrefabInstance:
       addedObject: {fileID: 690829454}
     - targetCorrespondingSourceObject: {fileID: 5383769979556133297, guid: 71f342b478ead9d4d8766a81cb5b86df, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 690829455}
+      addedObject: {fileID: 690829458}
   m_SourcePrefab: {fileID: 100100000, guid: 71f342b478ead9d4d8766a81cb5b86df, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

@@ -4,51 +4,65 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float velocidadeMovimento = 5.0f; // Velocidade de movimento do personagem.
-    public float forcaPulo = 200.0f; // Força do pulo.
-    
-    private Rigidbody2D rb;
-    private Collider2D chaoCollider; // Collider do chão.
-    private bool estaNoChao; // Flag para verificar se o personagem está no chão.
+    public float moveSpeed = 5.0f; // Character movement speed.
+    public float jumpForce = 200.0f; // Jump force.
+    public int maxJumps = 3; // Maximum number of jumps.
 
-    // this function will start in the init of game
+    private Rigidbody2D rb;
+    private Collider2D groundCollider; // Ground collider.
+    private bool isGrounded; // Flag to check if the character is grounded.
+
+    // this function will start in the game's initialization
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        chaoCollider = GetComponent<Collider2D>(); // Certifique-se de que o Collider2D está anexado ao GameObject do personagem.
+        groundCollider = GetComponent<Collider2D>(); // Make sure the Collider2D is attached to the character GameObject.
     }
 
-    // está funcao é executada durante o jogo
+    // this function is executed during gameplay
     private void Update()
     {
-        // Obtém a entrada do teclado para a movimentação horizontal.
-        float movimentoHorizontal = Input.GetAxis("Horizontal");
+        // Get keyboard input for horizontal movement.
+        float horizontalMovement = Input.GetAxis("Horizontal");
 
-        // Calcula a direção do movimento.
-        Vector3 direcaoMovimento = new Vector3(movimentoHorizontal, 0f, 0f);
+        // Calculate the movement direction.
+        Vector3 moveDirection = new Vector3(horizontalMovement, 0f, 0f);
 
-        // Atualiza a posição do personagem com base na direção e na velocidade.
-        transform.position += direcaoMovimento * velocidadeMovimento * Time.deltaTime;
+        // Update the character's position based on direction and speed.
+        transform.position += moveDirection * moveSpeed * Time.deltaTime;
 
-        // Verifica se o jogador pressionou a tecla de espaço para pular.
-        if (Input.GetKeyDown(KeyCode.Space) && estaNoChao)
+        // Check if the player pressed the space key to jump and is either grounded or has jumps remaining.
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            Pular();
+            Jump();
         }
     }
 
-
-    private void Pular()
+    private void Jump()
     {
-        // Aplica uma força para fazer o personagem pular.
-        rb.AddForce(Vector2.up * forcaPulo);
+        // Apply a force to make the character jump.
+        rb.velocity = new Vector2(rb.velocity.x, 0f); // Reset the vertical velocity before jumping.
+        rb.AddForce(Vector2.up * jumpForce);
     }
 
     private void FixedUpdate()
     {
-        // Verifica se o personagem está no chão usando um Raycast.
-        // Isso requer que um Collider2D do chão esteja configurado em uma camada de colisão apropriada.
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, chaoCollider.bounds.extents.y + 0.1f);
-        estaNoChao = hit.collider != null;
+        // Check if the character is grounded by checking for collisions with objects tagged as 'ground'.
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, groundCollider.bounds.extents.y + 0.1f);
+
+        // Reset the grounded flag.
+        isGrounded = false;
+
+        // Check each collider to see if it's tagged as 'ground'.
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider.CompareTag("Ground"))
+            {
+                isGrounded = true;
+                break; // Exit the loop as soon as we find one 'ground' object.
+            }
+        }
+
     }
+
 }
