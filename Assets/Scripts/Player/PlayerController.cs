@@ -12,11 +12,15 @@ public class PlayerController : MonoBehaviour
     private Collider2D groundCollider; // Ground collider.
     private bool isGrounded; // Flag to check if the character is grounded.
 
+    public GameObject[] Hearths;
+    private int life;
+    private bool canTakeDamage = true; // Flag para controlar o tempo entre as colisões com inimigos.
     // this function will start in the game's initialization
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         groundCollider = GetComponent<Collider2D>(); // Make sure the Collider2D is attached to the character GameObject.
+        life = Hearths.Length;
     }
 
     // this function is executed during gameplay
@@ -35,6 +39,14 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             Jump();
+        }
+
+        if(life < 1){
+            Destroy(Hearths[0].gameObject);
+        }else if(life < 2){
+            Destroy(Hearths[1].gameObject);
+        }else if(life < 3){
+            Destroy(Hearths[2].gameObject);
         }
     }
 
@@ -61,8 +73,24 @@ public class PlayerController : MonoBehaviour
                 isGrounded = true;
                 break; // Exit the loop as soon as we find one 'ground' object.
             }
+           if (collider.CompareTag("Enemy") && canTakeDamage)
+            {
+                Debug.Log("aqui");
+                // Reduza uma vida.
+                life--;
+
+                // Defina o tempo de espera antes de permitir outra colisão com o mesmo inimigo.
+                canTakeDamage = false;
+                StartCoroutine(ResetDamageCooldown());
+            }
         }
 
+    }
+
+    private IEnumerator ResetDamageCooldown()
+    {
+        yield return new WaitForSeconds(1.0f); // Espere por 1 segundo (ou o tempo que você desejar).
+        canTakeDamage = true; // Permite outra colisão com inimigo.
     }
 
 }
