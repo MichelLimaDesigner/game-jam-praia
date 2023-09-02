@@ -357,7 +357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfa7ce8b6311b664795f68e4f7264b4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 424697570828019993, guid: e509067e21e8365419fc9cc054d35b41, type: 3}
   firePoint: {fileID: 690829457}
   bulletSpeed: 10
   bulletLifetime: 2
@@ -779,6 +779,10 @@ PrefabInstance:
     - target: {fileID: 8971819089080669355, guid: 5b83ef6a80016f442a958700ca02281f, type: 3}
       propertyPath: m_Mass
       value: 0.0001
+      objectReference: {fileID: 0}
+    - target: {fileID: 8971819089080669355, guid: 5b83ef6a80016f442a958700ca02281f, type: 3}
+      propertyPath: m_Constraints
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8971819089080669355, guid: 5b83ef6a80016f442a958700ca02281f, type: 3}
       propertyPath: m_GravityScale
