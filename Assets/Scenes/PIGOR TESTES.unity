@@ -292,6 +292,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!4 &690829457 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 659452302766455118, guid: 71f342b478ead9d4d8766a81cb5b86df, type: 3}
+  m_PrefabInstance: {fileID: 8983917036391438076}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &690829458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,6 +312,22 @@ MonoBehaviour:
   moveSpeed: 5
   jumpForce: 300
   maxJumps: 3
+--- !u!114 &690829459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 690829450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfa7ce8b6311b664795f68e4f7264b4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 0}
+  firePoint: {fileID: 690829457}
+  bulletSpeed: 10
+  bulletLifetime: 2
 --- !u!1 &732136467
 GameObject:
   m_ObjectHideFlags: 0
@@ -587,6 +608,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5383769979556133297, guid: 71f342b478ead9d4d8766a81cb5b86df, type: 3}
       insertIndex: -1
       addedObject: {fileID: 690829458}
+    - targetCorrespondingSourceObject: {fileID: 5383769979556133297, guid: 71f342b478ead9d4d8766a81cb5b86df, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 690829459}
   m_SourcePrefab: {fileID: 100100000, guid: 71f342b478ead9d4d8766a81cb5b86df, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
