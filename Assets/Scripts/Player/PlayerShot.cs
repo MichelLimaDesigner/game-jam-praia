@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerShot : MonoBehaviour
 {
-      public GameObject bulletPrefab; // Prefab of the bullet.
+    public GameObject bulletPrefab; // Prefab of the bullet.
     public Transform firePoint; // Point from where the bullets will be fired.
     public float bulletSpeed = 10.0f; // Bullet speed.
     public float bulletLifetime = 2.0f; // Bullet lifetime in seconds.
