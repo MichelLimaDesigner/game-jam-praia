@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class FloatEnemy : MonoBehaviour
 {
     [SerializeField] private Transform[] points;
@@ -62,3 +64,4 @@ public class FloatEnemy : MonoBehaviour
         }
     }
 }
+
