@@ -3236,7 +3236,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3.42
+  orthographic size: 3.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -7704,7 +7704,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42c0561127e0dd34f917e0a8bb518c4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName: PIGOR TESTES
+  nextSceneName: scene_1
 --- !u!1001 &1043953108240398748
 PrefabInstance:
   m_ObjectHideFlags: 0

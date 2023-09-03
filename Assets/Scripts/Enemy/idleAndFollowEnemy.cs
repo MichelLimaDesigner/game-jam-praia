@@ -13,6 +13,7 @@ public class idleAndFollowEnemy : MonoBehaviour
     private bool isFacingRight = true; // Flag para verificar a direção em que o inimigo está voltado.
     private SpriteRenderer enemySpriteRenderer;
     private Vector3 previousPosition;
+    public GameObject enemy;
 
     // Start is called before the first frame update
     void Start()
@@ -106,5 +107,13 @@ public class idleAndFollowEnemy : MonoBehaviour
         Vector3 enemyScale = transform.localScale;
         enemyScale.x = isFacingRight ? 1 : -1;
         transform.localScale = enemyScale;
+    }
+
+     private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Bullet"))
+        {
+          Destroy(enemy); // Destruir o inimigo
+        }
     }
 }
