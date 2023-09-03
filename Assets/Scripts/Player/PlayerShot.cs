@@ -27,7 +27,7 @@ public class PlayerShot : MonoBehaviour
         }
 
         // Detect the input to shoot (e.g., by pressing the "Fire1" button).
-        if (Input.GetButtonDown("K"))
+        if (Input.GetKeyDown(KeyCode.K))
         {
             Shoot();
         }

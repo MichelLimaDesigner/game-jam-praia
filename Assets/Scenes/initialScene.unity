@@ -3236,7 +3236,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 2.58
+  orthographic size: 3.42
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -5805,7 +5805,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 457278512903407737, guid: 7e3d01ffc55bf6e4a8eb0140d6605e33, type: 3}
   firePoint: {fileID: 1450774117}
   bulletSpeed: 10
-  bulletLifetime: 2
+  bulletLifetime: 1
 --- !u!114 &1360953532
 MonoBehaviour:
   m_ObjectHideFlags: 0
