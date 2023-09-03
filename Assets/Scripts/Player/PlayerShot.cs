@@ -56,4 +56,5 @@ public class PlayerShot : MonoBehaviour
         // Destroy the bullet after a specified time period (bulletLifetime).
         Destroy(bullet, bulletLifetime);
     }
+    
 }

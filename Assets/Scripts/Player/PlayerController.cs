@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -43,6 +44,7 @@ public class PlayerController : MonoBehaviour
 
         if(life < 1){
             Destroy(Hearths[0].gameObject);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 0);
         }else if(life < 2){
             Destroy(Hearths[1].gameObject);
         }else if(life < 3){

@@ -10,7 +10,7 @@ public class followEnemy : MonoBehaviour
 
     private bool isFollowing = false;
     private bool isFacingRight = true; // Flag para verificar a direção em que o inimigo está voltado.
-
+    public GameObject enemy;
     private SpriteRenderer enemySpriteRenderer;
 
     // Start is called before the first frame update
@@ -37,7 +37,8 @@ public class followEnemy : MonoBehaviour
         if (isFollowing)
         {
             followPlayer();
-        }
+        }      
+      
     }
 
     private void followPlayer()
@@ -68,5 +69,13 @@ public class followEnemy : MonoBehaviour
         Vector3 enemyScale = transform.localScale;
         enemyScale.x *= -1;
         transform.localScale = enemyScale;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Bullet"))
+        {
+          Destroy(enemy); // Destruir o inimigo
+        }
     }
 }
