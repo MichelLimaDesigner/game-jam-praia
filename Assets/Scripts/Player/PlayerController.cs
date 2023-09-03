@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour
     public GameObject[] Hearths;
     private int life;
     private bool canTakeDamage = true; // Flag para controlar o tempo entre as colisões com inimigos.
+
+    public PlayerAnimationController playerAnim;
+
     // this function will start in the game's initialization
     private void Start()
     {
@@ -33,11 +36,20 @@ public class PlayerController : MonoBehaviour
         // Calculate the movement direction.
         Vector3 moveDirection = new Vector3(horizontalMovement, 0f, 0f);
 
+        if (Mathf.Abs(horizontalMovement) > 0.1f)
+        {
+            playerAnim.PlayerAnimation("playerWalk");
+        }
+        else
+        {
+            playerAnim.PlayerAnimation("playerIddle"); // Pare a animação se não houver movimento lateral.
+        }
+
         // Update the character's position based on direction and speed.
         transform.position += moveDirection * moveSpeed * Time.deltaTime;
 
         // Check if the player pressed the space key to jump and is either grounded or has jumps remaining.
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && isGrounded)
         {
             Jump();
         }
