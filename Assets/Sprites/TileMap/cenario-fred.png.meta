@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 402310c0af4171243a3c774a27cce8d9
+guid: 0ab5d7aacec4ab5468f858db3e988b34
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -137,8 +137,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e296d6b56922c1e41ad7dd6281f7471e
-      internalID: 522084213
+      spriteID: 45f2f1067f65f9745a5404453ded9fa4
+      internalID: -1571292071
       vertices: []
       indices: 
       edges: []
@@ -158,8 +158,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f31b37a75b3ae6f419f71b5c850ef3dc
-      internalID: 1132606091
+      spriteID: f7c28cf9f9098534baaf5346e73162e1
+      internalID: 676357397
       vertices: []
       indices: 
       edges: []
@@ -179,8 +179,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fca5e19113754d844a87799f8d4d0e86
-      internalID: 1819752590
+      spriteID: 63e84fc511dd9714b88dc8ae99e52656
+      internalID: 1921951825
       vertices: []
       indices: 
       edges: []
@@ -200,8 +200,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2dba2cebae2745f47b484b4cb9de8198
-      internalID: -962306672
+      spriteID: 285d6e21e3bb31540b2cc2689b967348
+      internalID: -404529363
       vertices: []
       indices: 
       edges: []
@@ -221,8 +221,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d5ac98a929e5d6a44a58b382b2ca6c8b
-      internalID: -1226024028
+      spriteID: 4653e7bd0689e5d49802762164de0a79
+      internalID: -1919289009
       vertices: []
       indices: 
       edges: []
@@ -242,8 +242,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b6b2b2d55ba6ca84fb4b53b0ec587485
-      internalID: 255361799
+      spriteID: b1032425cfd1eb24386b925a59bb1428
+      internalID: -778346399
       vertices: []
       indices: 
       edges: []
@@ -263,8 +263,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 607398aaedafb504db457cade9b86786
-      internalID: 787273495
+      spriteID: b3c09d57b4506da419bab649706e50d2
+      internalID: -1691702986
       vertices: []
       indices: 
       edges: []
@@ -284,8 +284,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b5b915c37a957746b9dbd9945122713
-      internalID: -665885817
+      spriteID: b9040a015aba62c479e983bef5ca9ede
+      internalID: -790746818
       vertices: []
       indices: 
       edges: []
@@ -305,8 +305,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1128ee21362536142a04f3d32196f7cb
-      internalID: 848341926
+      spriteID: 0b2da1a87f1090845ac55e2e7856a34e
+      internalID: -823332383
       vertices: []
       indices: 
       edges: []
@@ -326,8 +326,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 78365e1a0b212e442b4da2ccd0475b5c
-      internalID: 1502182580
+      spriteID: 7e544fa39abc3954cb8978248ca28ed5
+      internalID: -1248611562
       vertices: []
       indices: 
       edges: []
@@ -343,16 +343,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      cenario-fred_0: 522084213
-      cenario-fred_1: 1132606091
-      cenario-fred_2: 1819752590
-      cenario-fred_3: -962306672
-      cenario-fred_4: -1226024028
-      cenario-fred_5: 255361799
-      cenario-fred_6: 787273495
-      cenario-fred_7: -665885817
-      cenario-fred_8: 848341926
-      cenario-fred_9: 1502182580
+      cenario-fred_0: -1571292071
+      cenario-fred_1: 676357397
+      cenario-fred_2: 1921951825
+      cenario-fred_3: -404529363
+      cenario-fred_4: -1919289009
+      cenario-fred_5: -778346399
+      cenario-fred_6: -1691702986
+      cenario-fred_7: -790746818
+      cenario-fred_8: -823332383
+      cenario-fred_9: -1248611562
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
