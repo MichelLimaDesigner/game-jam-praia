@@ -45,7 +45,10 @@ public class PlayerController : MonoBehaviour
 
         if (Mathf.Abs(horizontalMovement) > 0.1f)
         {
-            playerAnim.PlayerAnimation("playerWalk");
+            if (playerAnim != null)
+            {
+                playerAnim.PlayerAnimation("playerWalk");
+            }
         }
 
         // Update the character's position based on direction and speed.
@@ -55,13 +58,15 @@ public class PlayerController : MonoBehaviour
         if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && isGrounded)
         {
             Jump();
-            playerAnim.PlayerAnimation("playerJump");
+            if (playerAnim != null){
+                playerAnim.PlayerAnimation("playerJump");
+            }
         }
 
         if (life < 1)
         {
             Destroy(Hearths[0].gameObject);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 0);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         else if (life < 2)
         {
