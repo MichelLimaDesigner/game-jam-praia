@@ -18,6 +18,10 @@ public class PlayerController : MonoBehaviour
     private bool canTakeDamage = true; // Flag para controlar o tempo entre as colisões com inimigos.
 
     public PlayerAnimationController playerAnim;
+    public Material redMaterial; // Material vermelho.
+
+    private Material originalMaterial; // Material original do personagem.
+    private bool isRed = false; // Flag para verificar se o personagem está vermelho.
 
     // this function will start in the game's initialization
     private void Start()
@@ -25,6 +29,9 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         groundCollider = GetComponent<Collider2D>(); // Make sure the Collider2D is attached to the character GameObject.
         life = Hearths.Length;
+
+        // Salva o material original do personagem
+        originalMaterial = GetComponent<Renderer>().material;
     }
 
     // this function is executed during gameplay
@@ -40,10 +47,6 @@ public class PlayerController : MonoBehaviour
         {
             playerAnim.PlayerAnimation("playerWalk");
         }
-        else
-        {
-            playerAnim.PlayerAnimation("playerIddle"); // Pare a animação se não houver movimento lateral.
-        }
 
         // Update the character's position based on direction and speed.
         transform.position += moveDirection * moveSpeed * Time.deltaTime;
@@ -52,14 +55,20 @@ public class PlayerController : MonoBehaviour
         if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && isGrounded)
         {
             Jump();
+            playerAnim.PlayerAnimation("playerJump");
         }
 
-        if(life < 1){
+        if (life < 1)
+        {
             Destroy(Hearths[0].gameObject);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 0);
-        }else if(life < 2){
+        }
+        else if (life < 2)
+        {
             Destroy(Hearths[1].gameObject);
-        }else if(life < 3){
+        }
+        else if (life < 3)
+        {
             Destroy(Hearths[2].gameObject);
         }
     }
@@ -87,18 +96,25 @@ public class PlayerController : MonoBehaviour
                 isGrounded = true;
                 break; // Exit the loop as soon as we find one 'ground' object.
             }
-           if (collider.CompareTag("Enemy") && canTakeDamage)
+            if (collider.CompareTag("Enemy") && canTakeDamage)
             {
-                Debug.Log("aqui");
                 // Reduza uma vida.
                 life--;
-
+                // Define o material vermelho quando o jogador perder uma vida.
+                GetComponent<Renderer>().material = redMaterial;
                 // Defina o tempo de espera antes de permitir outra colisão com o mesmo inimigo.
                 canTakeDamage = false;
                 StartCoroutine(ResetDamageCooldown());
+
+                 // Alterna a cor do personagem para vermelho.
+                if (!isRed)
+                {
+                    GetComponent<Renderer>().material = redMaterial;
+                    isRed = true;
+                    StartCoroutine(ResetRedCooldown());
+                }
             }
         }
-
     }
 
     private IEnumerator ResetDamageCooldown()
@@ -107,4 +123,11 @@ public class PlayerController : MonoBehaviour
         canTakeDamage = true; // Permite outra colisão com inimigo.
     }
 
+    private IEnumerator ResetRedCooldown()
+    {
+        yield return new WaitForSeconds(0.5f); // Espere por 1 segundo (ou o tempo que você desejar).
+        // Volta à cor original após o tempo de espera.
+        GetComponent<Renderer>().material = originalMaterial;
+        isRed = false;
+    }
 }
