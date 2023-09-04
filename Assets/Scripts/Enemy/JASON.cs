@@ -16,6 +16,12 @@ public class Jason : MonoBehaviour
     public GameObject enemy;
     public int maxHits = 20; // Número máximo de vezes que o inimigo pode ser atingido.
     private int currentHits = 0; // Contagem atual de tiros recebidos
+
+    [SerializeField] AudioSource SFXSource;
+
+    [Header("----- Audio Clip -----")]
+    public AudioClip death;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -118,9 +124,20 @@ public class Jason : MonoBehaviour
             if (currentHits >= maxHits)
             {
                 // Se o inimigo foi atingido o número máximo de vezes, então destrua-o.
-                Destroy(enemy);
+                PlaySFX(death);
+                Death();
             }
             Destroy(other.gameObject);
         }
+    }
+
+    public void PlaySFX(AudioClip clip){
+        SFXSource.PlayOneShot(clip);
+    }
+
+     private IEnumerator Death()
+    {
+        yield return new WaitForSeconds(30.0f); // Espere por 1 segundo (ou o tempo que você desejar).
+        Destroy(enemy);
     }
 }

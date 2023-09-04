@@ -166,7 +166,7 @@ public class PlayerController : MonoBehaviour
         isRed = false;
     }
 
-         public void PlaySFX(AudioClip clip){
+    public void PlaySFX(AudioClip clip){
         SFXSource.PlayOneShot(clip);
     }
 
