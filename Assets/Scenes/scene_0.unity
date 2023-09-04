@@ -88885,26 +88885,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 1384329404827120223, guid: 4caa91b7c824dcf4ea55eff0b377390a, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1384329404827120223, guid: 4caa91b7c824dcf4ea55eff0b377390a, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 2986068050658734505, guid: 4caa91b7c824dcf4ea55eff0b377390a, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 902496bb8c4a11148aaf3a2b2372193d, type: 3}
-    - target: {fileID: 2986068050658734505, guid: 4caa91b7c824dcf4ea55eff0b377390a, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2986068050658734505, guid: 4caa91b7c824dcf4ea55eff0b377390a, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3896471442973696028, guid: 4caa91b7c824dcf4ea55eff0b377390a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13
@@ -88961,13 +88941,9 @@ PrefabInstance:
       propertyPath: m_Offset.x
       value: -0.15
       objectReference: {fileID: 0}
-    - target: {fileID: 5074781886634056557, guid: 4caa91b7c824dcf4ea55eff0b377390a, type: 3}
-      propertyPath: m_Offset.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8924254393943805363, guid: 4caa91b7c824dcf4ea55eff0b377390a, type: 3}
       propertyPath: jumpForce
-      value: 250
+      value: 240
       objectReference: {fileID: 0}
     - target: {fileID: 8924254393943805363, guid: 4caa91b7c824dcf4ea55eff0b377390a, type: 3}
       propertyPath: Hearths.Array.data[0]
