@@ -7086,6 +7086,7 @@ MonoBehaviour:
   - {fileID: 1116321102}
   - {fileID: 575287144}
   playerAnim: {fileID: 1360953539}
+  redMaterial: {fileID: 2100000, guid: 279e5abe4ebb5d94a8ba99f0373da046, type: 2}
 --- !u!50 &1360953533
 Rigidbody2D:
   serializedVersion: 4
