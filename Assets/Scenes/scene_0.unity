@@ -89358,6 +89358,14 @@ PrefabInstance:
       value: -0.15
       objectReference: {fileID: 0}
     - target: {fileID: 8924254393943805363, guid: 4caa91b7c824dcf4ea55eff0b377390a, type: 3}
+      propertyPath: hit
+      value: 
+      objectReference: {fileID: 8300000, guid: 530129224bcc90540a20e76395c11da0, type: 3}
+    - target: {fileID: 8924254393943805363, guid: 4caa91b7c824dcf4ea55eff0b377390a, type: 3}
+      propertyPath: death
+      value: 
+      objectReference: {fileID: 8300000, guid: 2c3310ed32238e245aabc44700d4a3d5, type: 3}
+    - target: {fileID: 8924254393943805363, guid: 4caa91b7c824dcf4ea55eff0b377390a, type: 3}
       propertyPath: SFXSource
       value: 
       objectReference: {fileID: 1349922190}

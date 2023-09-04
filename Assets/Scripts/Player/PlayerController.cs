@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
 
     private Material originalMaterial; // Material original do personagem.
     private bool isRed = false; // Flag para verificar se o personagem está vermelho.
+    private bool isDeath = false; // Flag para verificar se o personagem está vermelho.
 
     [SerializeField] AudioSource SFXSource;
 
@@ -39,10 +40,10 @@ public class PlayerController : MonoBehaviour
 
         // Salva o material original do personagem
         originalMaterial = GetComponent<Renderer>().material;
-    }
 
-     public void PlaySFX(AudioClip clip){
-        SFXSource.PlayOneShot(clip);
+        if(isDeath == true){
+            PlaySFX(death);
+        }
     }
 
     // this function is executed during gameplay
@@ -80,6 +81,8 @@ public class PlayerController : MonoBehaviour
         if (life < 1)
         {
             Destroy(Hearths[0].gameObject);
+                    isDeath = true;
+
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         else if (life < 2)
@@ -149,4 +152,9 @@ public class PlayerController : MonoBehaviour
         GetComponent<Renderer>().material = originalMaterial;
         isRed = false;
     }
+
+         public void PlaySFX(AudioClip clip){
+        SFXSource.PlayOneShot(clip);
+    }
+
 }
