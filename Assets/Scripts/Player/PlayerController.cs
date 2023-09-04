@@ -22,7 +22,12 @@ public class PlayerController : MonoBehaviour
 
     private Material originalMaterial; // Material original do personagem.
     private bool isRed = false; // Flag para verificar se o personagem está vermelho.
-    private bool isDeath = false; // Flag para verificar se o personagem está vermelho.
+    public GameObject Player; 
+    private float initialAlpha; // Variável para armazenar a opacidade inicial do material.
+    public float fadeSpeed = 1.0f; // A velocidade de escurecimento.
+    public Camera playerCamera; // Referência para a câmera do jogador.
+    private float originalNear; // Valor 'near' original da câmera
+    public float nearIncreaseSpeed = 1.0f;
 
     [SerializeField] AudioSource SFXSource;
 
@@ -40,10 +45,8 @@ public class PlayerController : MonoBehaviour
 
         // Salva o material original do personagem
         originalMaterial = GetComponent<Renderer>().material;
-
-        if(isDeath == true){
-            PlaySFX(death);
-        }
+        initialAlpha = GetComponent<Renderer>().material.color.a;
+        originalNear = playerCamera.nearClipPlane; // Salve o valor 'near' original da câmera.
     }
 
     // this function is executed during gameplay
@@ -81,9 +84,13 @@ public class PlayerController : MonoBehaviour
         if (life < 1)
         {
             Destroy(Hearths[0].gameObject);
-                    isDeath = true;
+            Color playerColor = GetComponent<Renderer>().material.color;
+            playerColor.a = 0f;
+            GetComponent<Renderer>().material.color = playerColor;
+            StartCoroutine(FadeCameraToBlack());
+            PlaySFX(death);
+            StartCoroutine(ReloadScene());
 
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         else if (life < 2)
         {
@@ -145,6 +152,12 @@ public class PlayerController : MonoBehaviour
         canTakeDamage = true; // Permite outra colisão com inimigo.
     }
 
+    private IEnumerator ReloadScene()
+    {
+        yield return new WaitForSeconds(4.0f); // Espere por 1 segundo (ou o tempo que você desejar).
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     private IEnumerator ResetRedCooldown()
     {
         yield return new WaitForSeconds(0.5f); // Espere por 1 segundo (ou o tempo que você desejar).
@@ -155,6 +168,14 @@ public class PlayerController : MonoBehaviour
 
          public void PlaySFX(AudioClip clip){
         SFXSource.PlayOneShot(clip);
+    }
+
+    private IEnumerator FadeCameraToBlack()
+    {
+       
+            playerCamera.nearClipPlane = 15;
+            yield return null;
+        
     }
 
 }

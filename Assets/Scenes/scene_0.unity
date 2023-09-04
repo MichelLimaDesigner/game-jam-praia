@@ -48470,6 +48470,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da39bdf1746672244b8eaec5a91dc3df, type: 3}
+--- !u!20 &547948552 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 804906277881189589, guid: 4caa91b7c824dcf4ea55eff0b377390a, type: 3}
+  m_PrefabInstance: {fileID: 1296961056049496590}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &548664150
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -89289,6 +89294,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 804906277881189589, guid: 4caa91b7c824dcf4ea55eff0b377390a, type: 3}
+      propertyPath: near clip plane
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 1384329404827120223, guid: 4caa91b7c824dcf4ea55eff0b377390a, type: 3}
       propertyPath: m_Name
       value: Player
@@ -89366,6 +89375,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 2c3310ed32238e245aabc44700d4a3d5, type: 3}
     - target: {fileID: 8924254393943805363, guid: 4caa91b7c824dcf4ea55eff0b377390a, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1349922181}
+    - target: {fileID: 8924254393943805363, guid: 4caa91b7c824dcf4ea55eff0b377390a, type: 3}
       propertyPath: SFXSource
       value: 
       objectReference: {fileID: 1349922190}
@@ -89373,6 +89386,10 @@ PrefabInstance:
       propertyPath: jumpForce
       value: 240
       objectReference: {fileID: 0}
+    - target: {fileID: 8924254393943805363, guid: 4caa91b7c824dcf4ea55eff0b377390a, type: 3}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 547948552}
     - target: {fileID: 8924254393943805363, guid: 4caa91b7c824dcf4ea55eff0b377390a, type: 3}
       propertyPath: Hearths.Array.data[0]
       value: 
