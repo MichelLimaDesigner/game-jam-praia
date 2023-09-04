@@ -11,6 +11,13 @@ public class PlayerShot : MonoBehaviour
 
     private bool facingRight = true; // Flag to control the character's direction.
 
+    [SerializeField] AudioSource SFXSource;
+
+    [Header("----- Audio Clip -----")]
+    public AudioClip shoot;
+
+    // audio control
+    AudioManager audioManager;
     // Update is called once per frame
     void Update()
     {
@@ -52,9 +59,13 @@ public class PlayerShot : MonoBehaviour
 
         // Set the bullet's velocity in the correct direction.
         bullet.GetComponent<Rigidbody2D>().velocity = shootDirection * bulletSpeed;
-
+        PlaySFX(shoot);
         // Destroy the bullet after a specified time period (bulletLifetime).
         Destroy(bullet, bulletLifetime);
+    }
+
+    public void PlaySFX(AudioClip clip){
+        SFXSource.PlayOneShot(clip);
     }
     
 }

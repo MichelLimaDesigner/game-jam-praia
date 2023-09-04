@@ -23,6 +23,13 @@ public class PlayerController : MonoBehaviour
     private Material originalMaterial; // Material original do personagem.
     private bool isRed = false; // Flag para verificar se o personagem está vermelho.
 
+    [SerializeField] AudioSource SFXSource;
+
+    [Header("----- Audio Clip -----")]
+    public AudioClip death;
+    public AudioClip checkpoint;
+    public AudioClip hit;
+
     // this function will start in the game's initialization
     private void Start()
     {
@@ -32,6 +39,10 @@ public class PlayerController : MonoBehaviour
 
         // Salva o material original do personagem
         originalMaterial = GetComponent<Renderer>().material;
+    }
+
+     public void PlaySFX(AudioClip clip){
+        SFXSource.PlayOneShot(clip);
     }
 
     // this function is executed during gameplay
@@ -48,6 +59,9 @@ public class PlayerController : MonoBehaviour
             if (playerAnim != null)
             {
                 playerAnim.PlayerAnimation("playerWalk");
+                // audioManager.PlaySFX(audioManager.wallTouch);
+            }else{
+                playerAnim.PlayerAnimation("playerIddle");
             }
         }
 
@@ -109,8 +123,8 @@ public class PlayerController : MonoBehaviour
                 GetComponent<Renderer>().material = redMaterial;
                 // Defina o tempo de espera antes de permitir outra colisão com o mesmo inimigo.
                 canTakeDamage = false;
-                StartCoroutine(ResetDamageCooldown());
-
+                StartCoroutine(ResetDamageCooldown());                
+                PlaySFX(hit);
                  // Alterna a cor do personagem para vermelho.
                 if (!isRed)
                 {
