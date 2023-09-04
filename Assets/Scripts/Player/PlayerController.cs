@@ -171,11 +171,9 @@ public class PlayerController : MonoBehaviour
     }
 
     private IEnumerator FadeCameraToBlack()
-    {
-       
-            playerCamera.nearClipPlane = 15;
-            yield return null;
-        
+    {       
+        playerCamera.nearClipPlane = 15;
+        yield return null;        
     }
 
 }
