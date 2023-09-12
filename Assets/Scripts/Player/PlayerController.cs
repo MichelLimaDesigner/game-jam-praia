@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour
     public AudioClip death;
     public AudioClip checkpoint;
     public AudioClip hit;
+    public AudioClip jump;
+
 
     // this function will start in the game's initialization
     private void Start()
@@ -107,6 +109,8 @@ public class PlayerController : MonoBehaviour
         // Apply a force to make the character jump.
         rb.velocity = new Vector2(rb.velocity.x, 0f); // Reset the vertical velocity before jumping.
         rb.AddForce(Vector2.up * jumpForce);
+        PlaySFX(jump);
+
     }
 
     private void FixedUpdate()

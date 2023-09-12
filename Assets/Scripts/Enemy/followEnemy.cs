@@ -12,6 +12,10 @@ public class followEnemy : MonoBehaviour
     private bool isFacingRight = true; // Flag para verificar a direção em que o inimigo está voltado.
     public GameObject enemy;
     private SpriteRenderer enemySpriteRenderer;
+    private bool canTakeDamage = true; // Flag para verificar a direção em que o inimigo está voltado.
+    private int currentHits = 0; // Contagem atual de tiros recebidos
+    public int maxHits = 5; // Número máximo de vezes que o inimigo pode ser atingido.
+
 
     // Start is called before the first frame update
     void Start()
@@ -73,9 +77,25 @@ public class followEnemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.CompareTag("Bullet") ){            
+            Destroy(other.gameObject);
+        }
         if (other.CompareTag("Bullet"))
         {
-          Destroy(enemy); // Destruir o inimigo
+            currentHits++;
+            canTakeDamage = false;
+            StartCoroutine(ResetDamageCooldown()); 
+            if (currentHits >= maxHits)
+            {
+                // Se o inimigo foi atingido o número máximo de vezes, então destrua-o.
+                Destroy(enemy);
+            }
         }
+    }
+
+     private IEnumerator ResetDamageCooldown()
+    {
+        yield return new WaitForSeconds(0.5f); // Espere por 1 segundo (ou o tempo que você desejar).
+        canTakeDamage = true; // Permite outra colisão com inimigo.
     }
 }

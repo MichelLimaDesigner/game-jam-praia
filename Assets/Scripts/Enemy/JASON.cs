@@ -17,10 +17,17 @@ public class Jason : MonoBehaviour
     public int maxHits = 20; // Número máximo de vezes que o inimigo pode ser atingido.
     private int currentHits = 0; // Contagem atual de tiros recebidos
 
+    public float timeToEnemyDeath = 5.0f;
     [SerializeField] AudioSource SFXSource;
+    [SerializeField] AudioSource hitSource;
+
 
     [Header("----- Audio Clip -----")]
     public AudioClip death;
+    public AudioClip hit;
+
+    private bool soundPlayed = false; // play sound controller
+    private bool canTakeDamage = true; // Flag para verificar a direção em que o inimigo está voltado.
 
     // Start is called before the first frame update
     void Start()
@@ -116,18 +123,27 @@ public class Jason : MonoBehaviour
         transform.localScale = enemyScale;
     }
 
-     private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Bullet"))
+        if (other.CompareTag("Bullet") ){            
+            Destroy(other.gameObject);
+        }
+        if (other.CompareTag("Bullet") && canTakeDamage)
         {
+            PlaySFX(hit);
             currentHits++;
+            canTakeDamage = false;
+            StartCoroutine(ResetDamageCooldown()); 
+            if (!soundPlayed && currentHits >= maxHits / 2)
+            {
+                PlaySFX(death);
+                soundPlayed = true;
+            }
             if (currentHits >= maxHits)
             {
                 // Se o inimigo foi atingido o número máximo de vezes, então destrua-o.
-                PlaySFX(death);
-                Death();
+                Destroy(enemy);
             }
-            Destroy(other.gameObject);
         }
     }
 
@@ -135,9 +151,9 @@ public class Jason : MonoBehaviour
         SFXSource.PlayOneShot(clip);
     }
 
-     private IEnumerator Death()
+    private IEnumerator ResetDamageCooldown()
     {
-        yield return new WaitForSeconds(30.0f); // Espere por 1 segundo (ou o tempo que você desejar).
-        Destroy(enemy);
+        yield return new WaitForSeconds(0.5f); // Espere por 1 segundo (ou o tempo que você desejar).
+        canTakeDamage = true; // Permite outra colisão com inimigo.
     }
 }
